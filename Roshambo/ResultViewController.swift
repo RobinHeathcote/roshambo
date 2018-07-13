@@ -10,8 +10,13 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
+    var userChoice: String?
+    var opponentChoice: String?
+    var result: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(result)
         // Do any additional setup after loading the view, typically from a nib.
     }
     

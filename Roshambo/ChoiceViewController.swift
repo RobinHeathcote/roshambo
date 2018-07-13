@@ -18,8 +18,14 @@ class ChoiceViewController: UIViewController {
     @IBOutlet var scissorsButton: UIButton!
     @IBOutlet var actionLabel: UILabel!
     @IBAction func rockButton(_ sender: Any) {
+        let controller: ResultViewController
+        controller = storyboard?.instantiateViewController(withIdentifier: "resultView") as! ResultViewController
         userChoice = "rock"
-        print(calculateVictor())
+        
+        controller.userChoice = userChoice
+        controller.opponentChoice = oponentChoice
+        controller.result = calculateVictor()
+        present(controller, animated: true, completion: nil)
     }
     @IBAction func paperButton(_ sender: Any) {
         userChoice = "paper"
@@ -34,7 +40,6 @@ class ChoiceViewController: UIViewController {
         super.viewDidLoad()
         oponentChoice = (generateOpponentChoice())
         print(oponentChoice)
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
