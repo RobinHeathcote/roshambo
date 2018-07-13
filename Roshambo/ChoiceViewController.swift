@@ -29,25 +29,26 @@ class ChoiceViewController: UIViewController {
     }
     @IBAction func paperButton(_ sender: Any) {
         userChoice = "paper"
-        print(calculateVictor())
+        performSegue(withIdentifier: "playGame", sender: self)
     }
     @IBAction func scissorsButton(_ sender: Any) {
         userChoice = "scissors"
-        print(calculateVictor())
+        performSegue(withIdentifier: "playGame", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         oponentChoice = (generateOpponentChoice())
-        print(oponentChoice)
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! ResultViewController
+        
+        controller.userChoice = userChoice
+        controller.opponentChoice = oponentChoice
+        controller.result = calculateVictor()
+    }
+
     func generateOpponentChoice() -> String {
         let randomValue = 1 + arc4random() % 6
         let choice: String

@@ -65,6 +65,7 @@
                         <outlet property="paperButton" destination="Nhg-z5-ye7" id="oOu-RG-OtF"/>
                         <outlet property="rockButton" destination="nQT-At-KyU" id="dcE-PB-chb"/>
                         <outlet property="scissorsButton" destination="aMp-8r-CBn" id="kwM-WX-ivV"/>
+                        <segue destination="gyY-O0-dVd" kind="presentation" identifier="playGame" id="5OV-HI-iWn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
