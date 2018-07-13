@@ -12,6 +12,7 @@ class ChoiceViewController: UIViewController {
     
     var oponentChoice: String?
     var userChoice: String?
+    var matchScenario: Int?
     
     @IBOutlet var rockButton: UIButton!
     @IBOutlet var paperButton: UIButton!
@@ -25,6 +26,7 @@ class ChoiceViewController: UIViewController {
         controller.userChoice = userChoice
         controller.opponentChoice = oponentChoice
         controller.result = calculateVictor()
+        controller.matchScenario = matchScenario!
         present(controller, animated: true, completion: nil)
     }
     @IBAction func paperButton(_ sender: Any) {
@@ -47,6 +49,7 @@ class ChoiceViewController: UIViewController {
         controller.userChoice = userChoice
         controller.opponentChoice = oponentChoice
         controller.result = calculateVictor()
+         controller.matchScenario = matchScenario!
     }
 
     func generateOpponentChoice() -> String {
@@ -70,18 +73,25 @@ class ChoiceViewController: UIViewController {
         switch userChoice {
         case let val where val == oponentChoice:
             result = "draw"
+            matchScenario = 1
         case let val where (val == "paper") && (oponentChoice == "rock"):
             result = "win"
+            matchScenario = 2
         case let val where (val == "paper") && (oponentChoice == "scissors"):
             result = "lost"
+            matchScenario = 3
         case let val where (val == "scissors") && (oponentChoice == "paper"):
             result = "win"
+            matchScenario = 3
         case let val where (val == "scissors") && (oponentChoice == "rock"):
             result = "lost"
+            matchScenario = 4
         case let val where (val == "rock") && (oponentChoice == "scissors"):
             result = "win"
+            matchScenario = 4
         case let val where (val == "rock") && (oponentChoice == "paper"):
             result = "lost"
+            matchScenario = 2
         default:
             result = "FAIL"
         }
