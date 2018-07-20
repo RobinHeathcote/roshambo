@@ -17,6 +17,9 @@ class ResultViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var resultImage: UIImageView!
+    @IBAction func playAgain(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
